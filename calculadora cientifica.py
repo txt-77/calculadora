@@ -1,19 +1,87 @@
 from tkinter import *
 from tkinter import font
+import functios
 
 root = Tk()
 root.title("calculadora cientifica")
+
+# Funções dos botões
+def botao_log():
+    entrada = tela.cget("text")
+    if entrada and entrada != "0":
+        try:
+            numero = float(entrada)
+            resultado = functios.logaritmo(numero)
+            functios.atualizar_tela(tela, str(resultado))
+        except:
+            functios.atualizar_tela(tela, "Erro")
+
+def botao_del():
+    entrada = tela.cget("text")
+    nova_entrada = functios.deletar(entrada)
+    if not nova_entrada:
+        nova_entrada = "0"
+    functios.atualizar_tela(tela, nova_entrada)
+
+def botao_x():
+    functios.fechar_programa(root)
+
+def botao_numero(numero):
+    functios.adicionar_numero(tela, numero)
+
+def botao_ponto():
+    entrada_atual = tela.cget("text")
+    if "." not in entrada_atual:
+        if entrada_atual == "0":
+            functios.atualizar_tela(tela, "0.")
+        else:
+            functios.atualizar_tela(tela, entrada_atual + ".")
+
+def botao_multiplicar():
+    entrada_atual = tela.cget("text")
+    if entrada_atual and not entrada_atual.endswith("×"):
+        functios.atualizar_tela(tela, entrada_atual + "×")
+
+def botao_igual():
+    entrada_atual = tela.cget("text")
+    try:
+        # Substitui × por * e ÷ por / para Python calcular
+        expressao = entrada_atual.replace("×", "*").replace("÷", "/")
+        resultado = eval(expressao)
+        functios.atualizar_tela(tela, str(resultado))
+    except:
+        functios.atualizar_tela(tela, "Erro")
+
+def botao_somar():
+    entrada_atual = tela.cget("text")
+    if entrada_atual and not entrada_atual.endswith("+"):
+        functios.atualizar_tela(tela, entrada_atual + "+")
+
+def botao_subtrair():
+    entrada_atual = tela.cget("text")
+    if entrada_atual and not entrada_atual.endswith("-"):
+        functios.atualizar_tela(tela, entrada_atual + "-")
+
+def botao_dividir():
+    entrada_atual = tela.cget("text")
+    if entrada_atual and not entrada_atual.endswith("÷"):
+        functios.atualizar_tela(tela, entrada_atual + "÷")
+
+def botao_ac():
+    functios.atualizar_tela(tela, "0")
 
 # Fontes
 fontBotao = font.Font(family="Arial", size=9, weight="bold")
 fontMini = font.Font(family="Arial", size=8, slant="italic")
 fontLabel = font.Font(family="Arial", size=15)
 
-Label(height=2,borderwidth=0.5,relief="solid",anchor="e",background="White",font=fontLabel).grid(row=0,column=0,columnspan=6,padx=5,pady=5,sticky="ew")
-#  Linha 1: SHIFT , ALPHA , REPLAY , MODE , CLR 
+tela = Label(height=2,borderwidth=0.5,relief="solid",anchor="e",background="White",font=fontLabel,text="0")
+tela.grid(row=0,column=0,columnspan=6,padx=5,pady=5,sticky="ew")
+#  Linha 1: SHIFT , ALPHA , REPLAY , MODE , X
 Button( text="SHIFT", width=4, height=1, font=fontBotao, fg="orange").grid(row=1, column=0 ,pady=1)
 Button( text="ALPHA", width=4, height=1, font=fontBotao, fg="red").grid(row=1, column=1 ,pady=1)
 Button( text="MODE", width=4, height=1, font=fontBotao).grid(row=1, column=4 ,pady=1)
+Button( text="X", width=4, height=1, font=fontBotao, bg="red", fg="white", command=botao_x).grid(row=1, column=5 ,pady=1)
 
 #  SETAS DO REPLAY
 
@@ -49,8 +117,8 @@ Button( text="x²", width=3, height=1, font=fontBotao).grid(row=5, column=2, sti
 Label( text="10^x", fg="orange", font=fontMini).grid(row=4, column=3, sticky="s" ,pady=1)
 Button( text="^", width=3, height=1, font=fontBotao).grid(row=5, column=3, sticky="s" ,pady=1)
 
-Label( text="10^x", fg="orange", font=fontMini).grid(row=4, column=3, sticky="s" ,pady=1)
-Button( text="log", width=3, height=1, font=fontBotao).grid(row=5, column=4, sticky="s" ,pady=1)
+Label( text="10^x", fg="orange", font=fontMini).grid(row=4, column=4, sticky="s" ,pady=1)
+Button( text="log", width=3, height=1, font=fontBotao, command=botao_log).grid(row=5, column=4, sticky="s" ,pady=1)
 
 Label( text="e^x", fg="orange", font=fontMini).grid(row=4, column=4, sticky="sw" ,pady=1)
 Label( text="e", fg="red", font=fontMini).grid(row=4, column=3, sticky="se" ,pady=1)
@@ -100,41 +168,41 @@ Label( text="M-", fg="orange", font=fontMini).grid(row=8, column=3, sticky="sw" 
 Button( text="M+", width=3, height=1, font=fontBotao).grid(row=9, column=5, pady=1)
 
 #  Linha 6: 7 8 9 DEL AC 
-Button( text="7", width=5, height=2, font=fontBotao).grid(row=11, column=0, padx=2, pady=2, sticky="s")
-Button( text="8", width=5, height=2, font=fontBotao).grid(row=11, column=1, padx=2, pady=2, sticky="s")
-Button( text="9", width=5, height=2, font=fontBotao).grid(row=11, column=2, padx=2, pady=2, sticky="s")
+Button( text="7", width=5, height=2, font=fontBotao, command=lambda: botao_numero(7)).grid(row=11, column=0, padx=2, pady=2, sticky="s")
+Button( text="8", width=5, height=2, font=fontBotao, command=lambda: botao_numero(8)).grid(row=11, column=1, padx=2, pady=2, sticky="s")
+Button( text="9", width=5, height=2, font=fontBotao, command=lambda: botao_numero(9)).grid(row=11, column=2, padx=2, pady=2, sticky="s")
 
 Label( text="INS", fg="orange", font=fontMini).grid(row=10, column=3, sticky="s", padx=2, pady=2)
-Button( text="DEL", width=5, height=2, font=fontBotao, bg="red", fg="white").grid(row=11, column=3, padx=2, pady=2, sticky="s")
+Button( text="DEL", width=5, height=2, font=fontBotao, bg="red", fg="white", command=botao_del).grid(row=11, column=3, padx=2, pady=2, sticky="s")
 
-Button( text="AC", width=5, height=2, font=fontBotao, bg="red", fg="white").grid(row=11, column=4, padx=2, pady=2, sticky="s")
+Button( text="AC", width=5, height=2, font=fontBotao, bg="red", fg="white", command=botao_ac).grid(row=11, column=4, padx=2, pady=2, sticky="s")
 
 #  Linha 7: 4 5 6 × ÷ 
 
 Label( text=" ").grid(row=12, column=0, sticky="s", padx=2, pady=2)
-Button( text="4", width=5, height=2, font=fontBotao).grid(row=13, column=0, padx=2, pady=2)
-Button( text="5", width=5, height=2, font=fontBotao).grid(row=13, column=1, padx=2, pady=2)
-Button( text="6", width=5, height=2, font=fontBotao).grid(row=13, column=2,padx=2, pady=2)
-Button( text="×", width=5, height=2, font=fontBotao).grid(row=13, column=3,padx=2, pady=2)
-Button( text="÷", width=5, height=2, font=fontBotao).grid(row=13, column=4, padx=2, pady=2)
+Button( text="4", width=5, height=2, font=fontBotao, command=lambda: botao_numero(4)).grid(row=13, column=0, padx=2, pady=2)
+Button( text="5", width=5, height=2, font=fontBotao, command=lambda: botao_numero(5)).grid(row=13, column=1, padx=2, pady=2)
+Button( text="6", width=5, height=2, font=fontBotao, command=lambda: botao_numero(6)).grid(row=13, column=2,padx=2, pady=2)
+Button( text="×", width=5, height=2, font=fontBotao, command=botao_multiplicar).grid(row=13, column=3,padx=2, pady=2)
+Button( text="÷", width=5, height=2, font=fontBotao, command=botao_dividir).grid(row=13, column=4, padx=2, pady=2)
 
 #  Linha 8: 1 2 3 - + 
 Label( text="S-SUM", fg="orange", font=fontMini).grid(row=14, column=0, sticky="s", padx=2, pady=2)
-Button( text="1", width=5, height=2, font=fontBotao).grid(row=15, column=0, sticky="s", padx=2, pady=2)
+Button( text="1", width=5, height=2, font=fontBotao, command=lambda: botao_numero(1)).grid(row=15, column=0, sticky="s", padx=2, pady=2)
 
 Label( text="S-VAR", fg="orange", font=fontMini).grid(row=14, column=1, sticky="s", padx=2, pady=2)
-Button( text="2", width=5, height=2, font=fontBotao).grid(row=15, column=1, sticky="s", padx=2, pady=2)
+Button( text="2", width=5, height=2, font=fontBotao, command=lambda: botao_numero(2)).grid(row=15, column=1, sticky="s", padx=2, pady=2)
 
-Button( text="3", width=5, height=2, font=fontBotao).grid(row=15, column=2, sticky="s", padx=2, pady=2)
-Button( text="-", width=5, height=2, font=fontBotao).grid(row=15, column=3, sticky="s", padx=2, pady=2)
-Button( text="+", width=5, height=2, font=fontBotao).grid(row=15, column=4, sticky="s", padx=2, pady=2)
+Button( text="3", width=5, height=2, font=fontBotao, command=lambda: botao_numero(3)).grid(row=15, column=2, sticky="s", padx=2, pady=2)
+Button( text="-", width=5, height=2, font=fontBotao, command=botao_subtrair).grid(row=15, column=3, sticky="s", padx=2, pady=2)
+Button( text="+", width=5, height=2, font=fontBotao, command=botao_somar).grid(row=15, column=4, sticky="s", padx=2, pady=2)
 
 #  Linha 9: 0 . EXP Ans = 
 Label( text="Rnd", fg="orange", font=fontMini).grid(row=16, column=0, sticky="s", padx=2, pady=2)
-Button( text="0", width=5, height=2, font=fontBotao).grid(row=17, column=0, padx=2, pady=2, sticky="s")
+Button( text="0", width=5, height=2, font=fontBotao, command=lambda: botao_numero(0)).grid(row=17, column=0, padx=2, pady=2, sticky="s")
 
 Label( text="Ran#", fg="orange", font=fontMini).grid(row=16, column=1, sticky="s", padx=2, pady=2)
-Button( text=".", width=5, height=2, font=fontBotao).grid(row=17, column=1, padx=2, pady=2, sticky="s")
+Button( text=".", width=5, height=2, font=fontBotao, command=botao_ponto).grid(row=17, column=1, padx=2, pady=2, sticky="s")
 
 Label( text="π", fg="orange", font=fontMini).grid(row=16, column=2, sticky="s", padx=2, pady=2)
 Button( text="EXP", width=5, height=2, font=fontBotao).grid(row=17, column=2, padx=2, pady=2, sticky="s")
@@ -143,6 +211,6 @@ Label( text="DRG►", fg="orange", font=fontMini).grid(row=16, column=3, sticky=
 Button( text="Ans", width=5, height=2, font=fontBotao).grid(row=17, column=3, sticky="s", padx=2, pady=2)
 
 Label( text="%", fg="orange", font=fontMini).grid(row=16, column=4, sticky="s", padx=2, pady=2)
-Button( text="=", width=5, height=2, font=fontBotao).grid(row=17, column=4, sticky="s", padx=2, pady=2)
+Button( text="=", width=5, height=2, font=fontBotao, command=botao_igual).grid(row=17, column=4, sticky="s", padx=2, pady=2)
 
 root.mainloop()
