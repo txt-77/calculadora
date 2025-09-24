@@ -1,11 +1,40 @@
 from tkinter import *
 from tkinter import font
 import functios
-
+import math
 root = Tk()
 root.title("calculadora cientifica")
 
+ultimo_resultado = None
+
 # Funções dos botões
+def botao_cos():
+    entrada = tela.cget("text")
+    if entrada and entrada != "0":
+        try:
+            numero = float(entrada)
+            resultado = math.cos(math.radians(numero))
+            functios.atualizar_tela(tela, str(resultado))
+        except:
+            functios.atualizar_tela(tela, "Erro")
+
+def botao_pol():
+    entrada = tela.cget("text")
+    if entrada and entrada != "0":
+        try:
+            numero = float(entrada)
+            magnitude = abs(numero)
+            fase = math.degrees(math.atan(numero))
+            resultado = f"{magnitude}∠{fase}°"
+            functios.atualizar_tela(tela, resultado)
+        except:
+            functios.atualizar_tela(tela, "Erro")
+
+def botao_ans():
+    global ultimo_resultado
+    if ultimo_resultado is not None:
+        functios.atualizar_tela(tela, str(ultimo_resultado))
+
 def botao_log():
     entrada = tela.cget("text")
     if entrada and entrada != "0":
@@ -105,7 +134,7 @@ Button(frame6, text="nCr", width=3, height=1, font=fontBotao).grid(row=3, column
 
 Label(frame6, text="Rec(", fg="orange", font=fontMini).grid(row=2, column=4, sticky="sw",pady=1)
 Label(frame6, text=":", fg="red", font=fontMini).grid(row=3, column=4, sticky="se",pady=1)
-Button(frame6, text="Pol(", width=3, height=1, font=fontBotao).grid(row=3, column=4, sticky="s" ,pady=1)
+Button(frame6, text="Pol(", width=3, height=1, font=fontBotao,command=lambda: botao_pol).grid(row=3, column=4, sticky="s" ,pady=1)
 
 Label(frame6, text="³√x", fg="orange", font=fontMini).grid(row=2, column=5, sticky="s" ,pady=1)
 Button(frame6, text="x³", width=3, height=1, font=fontBotao).grid(row=3, column=5, sticky="s" ,pady=1)
@@ -147,7 +176,7 @@ Button(frame6, text="sin", width=3, height=1, font=fontBotao).grid(row=7, column
 
 Label(frame6, text="E", fg="red", font=fontMini).grid(row=6, column=4, sticky="se" ,pady=1)
 Label(frame6, text="cos⁻¹", fg="orange", font=fontMini).grid(row=6, column=4, sticky="sw" ,pady=1)
-Button(frame6, text="cos", width=3, height=1, font=fontBotao).grid(row=7, column=4, pady=1)
+Button(frame6, text="cos", width=3, height=1, font=fontBotao,command=lambda: botao_cos).grid(row=7, column=4, pady=1)
 
 Label(frame6, text="F", fg="red", font=fontMini).grid(row=6, column=5, sticky="se" ,pady=1)
 Label(frame6, text="tan⁻¹", fg="orange", font=fontMini).grid(row=6, column=5, sticky="sw" ,pady=1)
@@ -214,7 +243,7 @@ Label(frame5, text="π", fg="orange", font=fontMini).grid(row=16, column=2, stic
 Button(frame5, text="EXP", width=5, height=2, font=fontBotao).grid(row=17, column=2, padx=2, pady=2, sticky="s")
 
 Label(frame5, text="DRG►", fg="orange", font=fontMini).grid(row=16, column=3, sticky="s", padx=2, pady=2)
-Button(frame5, text="Ans", width=5, height=2, font=fontBotao).grid(row=17, column=3, sticky="s", padx=2, pady=2)
+Button(frame5, text="Ans", width=5, height=2, font=fontBotao,command=lambda:botao_ans).grid(row=17, column=3, sticky="s", padx=2, pady=2)
 
 Label(frame5, text="%", fg="orange", font=fontMini).grid(row=16, column=4, sticky="s", padx=2, pady=2)
 Button(frame5, text="=", width=5, height=2, font=fontBotao, command=botao_igual).grid(row=17, column=4, sticky="s", padx=2, pady=2)
