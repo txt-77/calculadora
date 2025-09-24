@@ -77,140 +77,146 @@ fontLabel = font.Font(family="Arial", size=15)
 
 tela = Label(height=2,borderwidth=0.5,relief="solid",anchor="e",background="White",font=fontLabel,text="0")
 tela.grid(row=0,column=0,columnspan=6,padx=5,pady=5,sticky="ew")
+
+frame6 = Frame(root)
+frame6.grid(row=1, column=0, columnspan=6)
+
+frame5 = Frame(root)
+frame5.grid(row=2, column=0, columnspan=6, sticky="ew")
 #  Linha 1: SHIFT , ALPHA , REPLAY , MODE , X
-Button( text="SHIFT", width=4, height=1, font=fontBotao, fg="orange").grid(row=1, column=0 ,pady=1)
-Button( text="ALPHA", width=4, height=1, font=fontBotao, fg="red").grid(row=1, column=1 ,pady=1)
-Button( text="MODE", width=4, height=1, font=fontBotao).grid(row=1, column=4 ,pady=1)
-Button( text="X", width=4, height=1, font=fontBotao, bg="red", fg="white", command=botao_x).grid(row=1, column=5 ,pady=1)
+Button(frame6, text="SHIFT", width=4, height=1, font=fontBotao, fg="orange").grid(row=1, column=0 ,pady=1,padx=3)
+Button(frame6, text="ALPHA", width=4, height=1, font=fontBotao, fg="red").grid(row=1, column=1 ,pady=1,padx=3)
+Button(frame6, text="MODE", width=4, height=1, font=fontBotao).grid(row=1, column=4 ,pady=1,padx=3)
+Button(frame6, text="X", width=4, height=1, font=fontBotao, bg="red", fg="white", command=botao_x).grid(row=1, column=5 ,pady=1,padx=3)
 
 #  SETAS DO REPLAY
 
-Button(text="↑", width=4, height=1, font=fontBotao).grid(row=1, column=2,columnspan=2, pady=1,sticky="s")
-Button(text="←", width=3, height=1, font=fontBotao).grid(row=2, column=2)
-Button(text="→", width=3, height=1, font=fontBotao).grid(row=2, column=3)
-Button(text="↓", width=4, height=1, font=fontBotao).grid(row=3, column=2,columnspan=2, pady=1 )
+Button(frame6,text="↑", width=4, height=1, font=fontBotao).grid(row=1, column=2,columnspan=2, pady=1,sticky="s")
+Button(frame6,text="←", width=3, height=1, font=fontBotao).grid(row=2, column=2,padx=3)
+Button(frame6,text="→", width=3, height=1, font=fontBotao).grid(row=2, column=3,padx=3)
+Button(frame6,text="↓", width=4, height=1, font=fontBotao).grid(row=3, column=2,columnspan=2, pady=1 )
 
 #  Linha 2: x^-1 , nCr , Pol , Rec , x³ , x^y 
-Label( text="x!", fg="orange", font=fontMini).grid(row=2, column=0, sticky="s",pady=1)
-Button( text="x⁻¹", width=3, height=1, font=fontBotao).grid(row=3, column=0, sticky="s" ,pady=1)
+Label(frame6, text="x!", fg="orange", font=fontMini).grid(row=2, column=0, sticky="s",pady=1)
+Button(frame6, text="x⁻¹", width=3, height=1, font=fontBotao).grid(row=3, column=0, sticky="s" ,pady=1)
 
-Label( text="nPr", fg="orange", font=fontMini).grid(row=2, column=1, sticky="s" ,pady=1)
-Button( text="nCr", width=3, height=1, font=fontBotao).grid(row=3, column=1, sticky="s" ,pady=1)
+Label(frame6, text="nPr", fg="orange", font=fontMini).grid(row=2, column=1, sticky="s" ,pady=1)
+Button(frame6, text="nCr", width=3, height=1, font=fontBotao).grid(row=3, column=1, sticky="s" ,pady=1)
 
-Label( text="Rec(", fg="orange", font=fontMini).grid(row=2, column=4, sticky="sw",pady=1)
-Label( text=":", fg="red", font=fontMini).grid(row=3, column=4, sticky="se",pady=1)
-Button( text="Pol(", width=3, height=1, font=fontBotao).grid(row=3, column=4, sticky="s" ,pady=1)
+Label(frame6, text="Rec(", fg="orange", font=fontMini).grid(row=2, column=4, sticky="sw",pady=1)
+Label(frame6, text=":", fg="red", font=fontMini).grid(row=3, column=4, sticky="se",pady=1)
+Button(frame6, text="Pol(", width=3, height=1, font=fontBotao).grid(row=3, column=4, sticky="s" ,pady=1)
 
-Label( text="³√x", fg="orange", font=fontMini).grid(row=2, column=5, sticky="s" ,pady=1)
-Button( text="x³", width=3, height=1, font=fontBotao).grid(row=3, column=5, sticky="s" ,pady=1)
+Label(frame6, text="³√x", fg="orange", font=fontMini).grid(row=2, column=5, sticky="s" ,pady=1)
+Button(frame6, text="x³", width=3, height=1, font=fontBotao).grid(row=3, column=5, sticky="s" ,pady=1)
 
 #  Linha 3: ab,c , x² , √ , log , ln , ^
-Label( text="d/c", fg="orange", font=fontMini).grid(row=4, column=0, sticky="s",pady=1)
-Button( text="a b/c", width=3, height=1, font=fontBotao).grid(row=5, column=0, sticky="s",pady=1)
+Label(frame6, text="d/c", fg="orange", font=fontMini).grid(row=4, column=0, sticky="s",pady=1)
+Button(frame6, text="a b/c", width=3, height=1, font=fontBotao).grid(row=5, column=0, sticky="s",pady=1)
 
-Label( text="∛x", fg="orange", font=fontMini).grid(row=4, column=1, sticky="s" ,pady=1)
-Button( text="√", width=3, height=1, font=fontBotao).grid(row=5, column=1, sticky="s",pady=1)
+Label(frame6, text="∛x", fg="orange", font=fontMini).grid(row=4, column=1, sticky="s" ,pady=1)
+Button(frame6, text="√", width=3, height=1, font=fontBotao).grid(row=5, column=1, sticky="s",pady=1)
 
-Label( text="x√y", fg="orange", font=fontMini).grid(row=4, column=2, sticky="s",pady=1)
-Button( text="x²", width=3, height=1, font=fontBotao).grid(row=5, column=2, sticky="s",pady=1)
+Label(frame6, text="x√y", fg="orange", font=fontMini).grid(row=4, column=2, sticky="s",pady=1)
+Button(frame6, text="x²", width=3, height=1, font=fontBotao).grid(row=5, column=2, sticky="s",pady=1)
 
-Label( text="10^x", fg="orange", font=fontMini).grid(row=4, column=3, sticky="s" ,pady=1)
-Button( text="^", width=3, height=1, font=fontBotao).grid(row=5, column=3, sticky="s" ,pady=1)
+Label(frame6, text="10^x", fg="orange", font=fontMini).grid(row=4, column=3, sticky="s" ,pady=1)
+Button(frame6, text="^", width=3, height=1, font=fontBotao).grid(row=5, column=3, sticky="s" ,pady=1)
 
-Label( text="10^x", fg="orange", font=fontMini).grid(row=4, column=4, sticky="s" ,pady=1)
-Button( text="log", width=3, height=1, font=fontBotao, command=botao_log).grid(row=5, column=4, sticky="s" ,pady=1)
+Label(frame6, text="10^x", fg="orange", font=fontMini).grid(row=4, column=4, sticky="s" ,pady=1)
+Button(frame6, text="log", width=3, height=1, font=fontBotao, command=botao_log).grid(row=5, column=4, sticky="s" ,pady=1)
 
-Label( text="e^x", fg="orange", font=fontMini).grid(row=4, column=4, sticky="sw" ,pady=1)
-Label( text="e", fg="red", font=fontMini).grid(row=4, column=3, sticky="se" ,pady=1)
-Button( text="In", width=3, height=1, font=fontBotao).grid(row=5, column=5, sticky="s" ,pady=1)
+Label(frame6, text="e^x", fg="orange", font=fontMini).grid(row=4, column=4, sticky="sw" ,pady=1)
+Label(frame6, text="e", fg="red", font=fontMini).grid(row=4, column=3, sticky="se" ,pady=1)
+Button(frame6, text="In", width=3, height=1, font=fontBotao).grid(row=5, column=5, sticky="s" ,pady=1)
 
 #  Linha 4: hyp , sin , cos , tan , RCL , ENG 
-Label( text="A", fg="red", font=fontMini).grid(row=6, column=0, sticky="se" ,pady=1)
-Button( text="(-)", width=3, height=1, font=fontBotao).grid(row=7, column=0, sticky="s" ,pady=1)
+Label(frame6, text="A", fg="red", font=fontMini).grid(row=6, column=0, sticky="se" ,pady=1)
+Button(frame6, text="(-)", width=3, height=1, font=fontBotao).grid(row=7, column=0, sticky="s" ,pady=1)
 
-Label( text="B", fg="red", font=fontMini).grid(row=6, column=1, sticky="se" ,pady=1)
-Label( text="←", fg="orange", font=fontMini).grid(row=6, column=1, sticky="sw" ,pady=1)
-Button( text="sin", width=3, height=1, font=fontBotao).grid(row=7, column=1, sticky="s" ,pady=1)
+Label(frame6, text="B", fg="red", font=fontMini).grid(row=6, column=1, sticky="se" ,pady=1)
+Label(frame6, text="←", fg="orange", font=fontMini).grid(row=6, column=1, sticky="sw" ,pady=1)
+Button(frame6, text="sin", width=3, height=1, font=fontBotao).grid(row=7, column=1, sticky="s" ,pady=1)
 
-Label( text="C", fg="red", font=fontMini).grid(row=6, column=2, sticky="se" ,pady=1)
-Button( text="hyp", width=3, height=1, font=fontBotao).grid(row=7, column=2, sticky="s" ,pady=1)
+Label(frame6, text="C", fg="red", font=fontMini).grid(row=6, column=2, sticky="se" ,pady=1)
+Button(frame6, text="hyp", width=3, height=1, font=fontBotao).grid(row=7, column=2, sticky="s" ,pady=1)
 
-Label( text="D", fg="red", font=fontMini).grid(row=6, column=3, sticky="se" ,pady=1)
-Label( text="sin⁻¹", fg="orange", font=fontMini).grid(row=6, column=3, sticky="sw" ,pady=1)
-Button( text="sin", width=3, height=1, font=fontBotao).grid(row=7, column=3, pady=1)
+Label(frame6, text="D", fg="red", font=fontMini).grid(row=6, column=3, sticky="se" ,pady=1)
+Label(frame6, text="sin⁻¹", fg="orange", font=fontMini).grid(row=6, column=3, sticky="sw" ,pady=1)
+Button(frame6, text="sin", width=3, height=1, font=fontBotao).grid(row=7, column=3, pady=1)
 
-Label( text="E", fg="red", font=fontMini).grid(row=6, column=4, sticky="se" ,pady=1)
-Label( text="cos⁻¹", fg="orange", font=fontMini).grid(row=6, column=4, sticky="sw" ,pady=1)
-Button( text="cos", width=3, height=1, font=fontBotao).grid(row=7, column=4, pady=1)
+Label(frame6, text="E", fg="red", font=fontMini).grid(row=6, column=4, sticky="se" ,pady=1)
+Label(frame6, text="cos⁻¹", fg="orange", font=fontMini).grid(row=6, column=4, sticky="sw" ,pady=1)
+Button(frame6, text="cos", width=3, height=1, font=fontBotao).grid(row=7, column=4, pady=1)
 
-Label( text="F", fg="red", font=fontMini).grid(row=6, column=5, sticky="se" ,pady=1)
-Label( text="tan⁻¹", fg="orange", font=fontMini).grid(row=6, column=5, sticky="sw" ,pady=1)
-Button( text="tan", width=3, height=1, font=fontBotao).grid(row=7, column=5, pady=1)
+Label(frame6, text="F", fg="red", font=fontMini).grid(row=6, column=5, sticky="se" ,pady=1)
+Label(frame6, text="tan⁻¹", fg="orange", font=fontMini).grid(row=6, column=5, sticky="sw" ,pady=1)
+Button(frame6, text="tan", width=3, height=1, font=fontBotao).grid(row=7, column=5, pady=1)
 
 #  Linha 5: RCL , ENG , ( , ) , M+
-Label( text="STO", fg="orange", font=fontMini).grid(row=8, column=0, sticky="s" ,pady=1)
-Button( text="RCL", width=3, height=1, font=fontBotao).grid(row=9, column=0, sticky="s" ,pady=1)
+Label(frame6, text="STO", fg="orange", font=fontMini).grid(row=8, column=0, sticky="s" ,pady=1)
+Button(frame6, text="RCL", width=3, height=1, font=fontBotao).grid(row=9, column=0, sticky="s" ,pady=1)
 
-Label( text="←", fg="orange", font=fontMini).grid(row=8, column=1, sticky="s" ,pady=1)
-Button( text="ENG", width=3, height=1, font=fontBotao).grid(row=9, column=1, sticky="s" ,pady=1)
+Label(frame6, text="←", fg="orange", font=fontMini).grid(row=8, column=1, sticky="s" ,pady=1)
+Button(frame6, text="ENG", width=3, height=1, font=fontBotao).grid(row=9, column=1, sticky="s" ,pady=1)
 
-Button( text="(", width=3, height=1, font=fontBotao).grid(row=9, column=2, sticky="s" ,pady=1)
+Button(frame6, text="(", width=3, height=1, font=fontBotao).grid(row=9, column=2, sticky="s" ,pady=1)
 
-Label( text="X", fg="red", font=fontMini).grid(row=8, column=3, sticky="se" ,pady=1)
-Button( text=")", width=3, height=1, font=fontBotao).grid(row=9, column=3, pady=1)
+Label(frame6, text="X", fg="red", font=fontMini).grid(row=8, column=3, sticky="se" ,pady=1)
+Button(frame6, text=")", width=3, height=1, font=fontBotao).grid(row=9, column=3, pady=1)
 
-Label( text="Y", fg="red", font=fontMini).grid(row=8, column=4, sticky="se" ,pady=1)
-Label( text=";", fg="orange", font=fontMini).grid(row=8, column=4, sticky="sw" ,pady=1)
-Button( text=",", width=3, height=1, font=fontBotao).grid(row=9, column=4, pady=1)
+Label(frame6, text="Y", fg="red", font=fontMini).grid(row=8, column=4, sticky="se" ,pady=1)
+Label(frame6, text=";", fg="orange", font=fontMini).grid(row=8, column=4, sticky="sw" ,pady=1)
+Button(frame6, text=",", width=3, height=1, font=fontBotao).grid(row=9, column=4, pady=1)
 
-Label( text="M", fg="red", font=fontMini).grid(row=8, column=3, sticky="se" ,pady=1)
-Label( text="M-", fg="orange", font=fontMini).grid(row=8, column=3, sticky="sw" ,pady=1)
-Button( text="M+", width=3, height=1, font=fontBotao).grid(row=9, column=5, pady=1)
+Label(frame6, text="M", fg="red", font=fontMini).grid(row=8, column=3, sticky="se" ,pady=1)
+Label(frame6, text="M-", fg="orange", font=fontMini).grid(row=8, column=3, sticky="sw" ,pady=1)
+Button(frame6, text="M+", width=3, height=1, font=fontBotao).grid(row=9, column=5, pady=1)
 
 #  Linha 6: 7 8 9 DEL AC 
-Button( text="7", width=5, height=2, font=fontBotao, command=lambda: botao_numero(7)).grid(row=11, column=0, padx=2, pady=2, sticky="s")
-Button( text="8", width=5, height=2, font=fontBotao, command=lambda: botao_numero(8)).grid(row=11, column=1, padx=2, pady=2, sticky="s")
-Button( text="9", width=5, height=2, font=fontBotao, command=lambda: botao_numero(9)).grid(row=11, column=2, padx=2, pady=2, sticky="s")
+Button(frame5, text="7", width=5, height=2, font=fontBotao, command=lambda: botao_numero(7)).grid(row=11, column=0, padx=2, pady=2, sticky="s")
+Button(frame5, text="8", width=5, height=2, font=fontBotao, command=lambda: botao_numero(8)).grid(row=11, column=1, padx=2, pady=2, sticky="s")
+Button(frame5, text="9", width=5, height=2, font=fontBotao, command=lambda: botao_numero(9)).grid(row=11, column=2, padx=2, pady=2, sticky="s")
 
-Label( text="INS", fg="orange", font=fontMini).grid(row=10, column=3, sticky="s", padx=2, pady=2)
-Button( text="DEL", width=5, height=2, font=fontBotao, bg="red", fg="white", command=botao_del).grid(row=11, column=3, padx=2, pady=2, sticky="s")
+Label(frame5, text="INS", fg="orange", font=fontMini).grid(row=10, column=3, sticky="s", padx=2, pady=2)
+Button(frame5, text="DEL", width=5, height=2, font=fontBotao, bg="red", fg="white", command=botao_del).grid(row=11, column=3, padx=2, pady=2, sticky="s")
 
-Button( text="AC", width=5, height=2, font=fontBotao, bg="red", fg="white", command=botao_ac).grid(row=11, column=4, padx=2, pady=2, sticky="s")
-
+Button(frame5, text="AC", width=5, height=2, font=fontBotao, bg="red", fg="white", command=botao_ac).grid(row=11, column=4, padx=2, pady=2, sticky="s")
+frame5,
 #  Linha 7: 4 5 6 × ÷ 
 
-Label( text=" ").grid(row=12, column=0, sticky="s", padx=2, pady=2)
-Button( text="4", width=5, height=2, font=fontBotao, command=lambda: botao_numero(4)).grid(row=13, column=0, padx=2, pady=2)
-Button( text="5", width=5, height=2, font=fontBotao, command=lambda: botao_numero(5)).grid(row=13, column=1, padx=2, pady=2)
-Button( text="6", width=5, height=2, font=fontBotao, command=lambda: botao_numero(6)).grid(row=13, column=2,padx=2, pady=2)
-Button( text="×", width=5, height=2, font=fontBotao, command=botao_multiplicar).grid(row=13, column=3,padx=2, pady=2)
-Button( text="÷", width=5, height=2, font=fontBotao, command=botao_dividir).grid(row=13, column=4, padx=2, pady=2)
+Label(frame5, text=" ").grid(row=12, column=0, sticky="s", padx=2, pady=2)
+Button(frame5, text="4", width=5, height=2, font=fontBotao, command=lambda: botao_numero(4)).grid(row=13, column=0, padx=2, pady=2)
+Button( frame5,text="5", width=5, height=2, font=fontBotao, command=lambda: botao_numero(5)).grid(row=13, column=1, padx=2, pady=2)
+Button(frame5, text="6", width=5, height=2, font=fontBotao, command=lambda: botao_numero(6)).grid(row=13, column=2,padx=2, pady=2)
+Button(frame5, text="×", width=5, height=2, font=fontBotao, command=botao_multiplicar).grid(row=13, column=3,padx=2, pady=2)
+Button(frame5, text="÷", width=5, height=2, font=fontBotao, command=botao_dividir).grid(row=13, column=4, padx=2, pady=2)
 
 #  Linha 8: 1 2 3 - + 
-Label( text="S-SUM", fg="orange", font=fontMini).grid(row=14, column=0, sticky="s", padx=2, pady=2)
-Button( text="1", width=5, height=2, font=fontBotao, command=lambda: botao_numero(1)).grid(row=15, column=0, sticky="s", padx=2, pady=2)
+Label(frame5, text="S-SUM", fg="orange", font=fontMini).grid(row=14, column=0, sticky="s", padx=2, pady=2)
+Button(frame5, text="1", width=5, height=2, font=fontBotao, command=lambda: botao_numero(1)).grid(row=15, column=0, sticky="s", padx=2, pady=2)
 
-Label( text="S-VAR", fg="orange", font=fontMini).grid(row=14, column=1, sticky="s", padx=2, pady=2)
-Button( text="2", width=5, height=2, font=fontBotao, command=lambda: botao_numero(2)).grid(row=15, column=1, sticky="s", padx=2, pady=2)
+Label( frame5,text="S-VAR", fg="orange", font=fontMini).grid(row=14, column=1, sticky="s", padx=2, pady=2)
+Button( frame5,text="2", width=5, height=2, font=fontBotao, command=lambda: botao_numero(2)).grid(row=15, column=1, sticky="s", padx=2, pady=2)
 
-Button( text="3", width=5, height=2, font=fontBotao, command=lambda: botao_numero(3)).grid(row=15, column=2, sticky="s", padx=2, pady=2)
-Button( text="-", width=5, height=2, font=fontBotao, command=botao_subtrair).grid(row=15, column=3, sticky="s", padx=2, pady=2)
-Button( text="+", width=5, height=2, font=fontBotao, command=botao_somar).grid(row=15, column=4, sticky="s", padx=2, pady=2)
+Button(frame5, text="3", width=5, height=2, font=fontBotao, command=lambda: botao_numero(3)).grid(row=15, column=2, sticky="s", padx=2, pady=2)
+Button(frame5, text="-", width=5, height=2, font=fontBotao, command=botao_subtrair).grid(row=15, column=3, sticky="s", padx=2, pady=2)
+Button(frame5, text="+", width=5, height=2, font=fontBotao, command=botao_somar).grid(row=15, column=4, sticky="s", padx=2, pady=2)
 
 #  Linha 9: 0 . EXP Ans = 
-Label( text="Rnd", fg="orange", font=fontMini).grid(row=16, column=0, sticky="s", padx=2, pady=2)
-Button( text="0", width=5, height=2, font=fontBotao, command=lambda: botao_numero(0)).grid(row=17, column=0, padx=2, pady=2, sticky="s")
+Label(frame5, text="Rnd", fg="orange", font=fontMini).grid(row=16, column=0, sticky="s", padx=2, pady=2)
+Button(frame5, text="0", width=5, height=2, font=fontBotao, command=lambda: botao_numero(0)).grid(row=17, column=0, padx=2, pady=2, sticky="s")
 
-Label( text="Ran#", fg="orange", font=fontMini).grid(row=16, column=1, sticky="s", padx=2, pady=2)
-Button( text=".", width=5, height=2, font=fontBotao, command=botao_ponto).grid(row=17, column=1, padx=2, pady=2, sticky="s")
+Label(frame5, text="Ran#", fg="orange", font=fontMini).grid(row=16, column=1, sticky="s", padx=2, pady=2)
+Button(frame5, text=".", width=5, height=2, font=fontBotao, command=botao_ponto).grid(row=17, column=1, padx=2, pady=2, sticky="s")
 
-Label( text="π", fg="orange", font=fontMini).grid(row=16, column=2, sticky="s", padx=2, pady=2)
-Button( text="EXP", width=5, height=2, font=fontBotao).grid(row=17, column=2, padx=2, pady=2, sticky="s")
+Label(frame5, text="π", fg="orange", font=fontMini).grid(row=16, column=2, sticky="s", padx=2, pady=2)
+Button(frame5, text="EXP", width=5, height=2, font=fontBotao).grid(row=17, column=2, padx=2, pady=2, sticky="s")
 
-Label( text="DRG►", fg="orange", font=fontMini).grid(row=16, column=3, sticky="s", padx=2, pady=2)
-Button( text="Ans", width=5, height=2, font=fontBotao).grid(row=17, column=3, sticky="s", padx=2, pady=2)
+Label(frame5, text="DRG►", fg="orange", font=fontMini).grid(row=16, column=3, sticky="s", padx=2, pady=2)
+Button(frame5, text="Ans", width=5, height=2, font=fontBotao).grid(row=17, column=3, sticky="s", padx=2, pady=2)
 
-Label( text="%", fg="orange", font=fontMini).grid(row=16, column=4, sticky="s", padx=2, pady=2)
-Button( text="=", width=5, height=2, font=fontBotao, command=botao_igual).grid(row=17, column=4, sticky="s", padx=2, pady=2)
+Label(frame5, text="%", fg="orange", font=fontMini).grid(row=16, column=4, sticky="s", padx=2, pady=2)
+Button(frame5, text="=", width=5, height=2, font=fontBotao, command=botao_igual).grid(row=17, column=4, sticky="s", padx=2, pady=2)
 
 root.mainloop()
