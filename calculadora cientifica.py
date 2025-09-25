@@ -7,7 +7,7 @@ root.title("calculadora cientifica")
 
 ultimo_resultado = None
 
-# Funções dos botões
+# Funções dos botões DESATUALIZADO
 def botao_cos():
     entrada = tela.cget("text")
     if entrada and entrada != "0":
