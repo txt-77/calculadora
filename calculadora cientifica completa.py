@@ -42,12 +42,15 @@ def botao_ans():
     entrada_atual = tela.cget("text")
     global ultimo_resultado
     if ultimo_resultado is not None:
-        if entrada_atual and entrada_atual[-1] in ["+", "-", "×", "÷"]:
-            atualizar_tela(tela, entrada_atual + str(ultimo_resultado))
-        elif entrada_atual == "0":
-            atualizar_tela(tela, str(ultimo_resultado))
-        else:
-            atualizar_tela(tela, entrada_atual + "×" + str(ultimo_resultado))
+        if shift_active:
+            return
+        else: 
+            if entrada_atual and entrada_atual[-1] in ["+", "-", "×", "÷"]:
+                atualizar_tela(tela, entrada_atual + str(ultimo_resultado))
+            elif entrada_atual == "0":
+                atualizar_tela(tela, str(ultimo_resultado))
+            else:
+                atualizar_tela(tela, entrada_atual + "×" + str(ultimo_resultado))
 
 def botao_log():
     entrada = tela.cget("text")
@@ -64,10 +67,16 @@ def botao_cos():
     if entrada and entrada != "0":
         try:
             numero = float(entrada)
-            resultado = math.cos(math.radians(numero))
-            functios.atualizar_tela(tela, str(resultado))
+            if shift_active:
+                resultado = math.degrees(math.acos(numero))
+            elif hyp_mode:
+                resultado = math.cosh(numero)
+            else:
+                resultado = math.cos(math.radians(numero))
+            atualizar_tela(tela, str(resultado))
         except:
-            functios.atualizar_tela(tela, "Erro")
+            atualizar_tela(tela, "Erro")
+
 
 def botao_pol():
     entrada = tela.cget("text")
@@ -357,8 +366,7 @@ fontBotao = font.Font(family="Arial", size=9, weight="bold")
 fontMini = font.Font(family="Arial", size=8, slant="italic")
 fontLabel = font.Font(family="Arial", size=15)
 
-tela = Label(height=2, borderwidth=0.5, relief="solid", anchor="e", 
-             background="White", font=fontLabel, text="0")
+tela = Label(height=2, borderwidth=0.5, relief="solid", anchor="e", background="White", font=fontLabel, text="0", width=21)
 tela.grid(row=0, column=0, columnspan=6, padx=5, pady=5, sticky="ew")
 
 frame6 = Frame(root)
@@ -439,7 +447,8 @@ btnSin.grid(row=7, column=3, sticky="s", pady=1)
 
 Label(frame6, text="E", fg="red", font=fontMini).grid(row=6, column=4, sticky="se" ,pady=1)
 Label(frame6, text="cos⁻¹", fg="orange", font=fontMini).grid(row=6, column=4, sticky="sw" ,pady=1)
-Button(frame6, text="cos", width=3, height=1, font=fontBotao,command=lambda: botao_cos).grid(row=7, column=4, pady=1)
+btnCos = Button(frame6, text="cos", width=3, height=1, font=fontBotao,command=botao_cos)
+btnCos.grid(row=7, column=4, pady=1)
 
 Label(frame6, text="F", fg="red", font=fontMini).grid(row=6, column=5, sticky="se", pady=1)
 Label(frame6, text="tan⁻¹", fg="orange", font=fontMini).grid(row=6, column=5, sticky="sw", pady=1)
@@ -506,7 +515,7 @@ Label(frame5, text="π", fg="orange", font=fontMini).grid(row=16, column=2, stic
 Button(frame5, text="EXP", width=5, height=2, font=fontBotao, command=botao_exp).grid(row=17, column=2, padx=2, pady=2, sticky="s")
 
 Label(frame5, text="DRG►", fg="orange", font=fontMini).grid(row=16, column=3, sticky="s", padx=2, pady=2)
-Button(frame5, text="Ans", width=5, height=2, font=fontBotao,command=lambda:botao_ans).grid(row=17, column=3, sticky="s", padx=2, pady=2)
+Button(frame5, text="Ans", width=5, height=2, font=fontBotao,command=botao_ans).grid(row=17, column=3, sticky="s", padx=2, pady=2)
 
 Label(frame5, text="%", fg="orange", font=fontMini).grid(row=16, column=4, sticky="s", padx=2, pady=2)
 Button(frame5, text="=", width=5, height=2, font=fontBotao, command=botao_igual).grid(row=17, column=4, sticky="s", padx=2, pady=2)
