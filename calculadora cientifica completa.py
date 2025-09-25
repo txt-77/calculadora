@@ -424,8 +424,8 @@ Label(frame6, text="10^x", fg="orange", font=fontMini).grid(row=4, column=4, sti
 btnLog = Button(frame6, text="log", width=3, height=1, font=fontBotao, command=botao_log)
 btnLog.grid(row=5, column=4, sticky="s", pady=1)
 
-Label(frame6, text="e^x", fg="orange", font=fontMini).grid(row=4, column=4, sticky="sw", pady=1)
-Label(frame6, text="e", fg="red", font=fontMini).grid(row=4, column=3, sticky="se", pady=1)
+Label(frame6, text="e^x", fg="orange", font=fontMini).grid(row=4, column=5, sticky="sw", pady=1)
+Label(frame6, text="e", fg="red", font=fontMini).grid(row=4, column=5, sticky="se", pady=1)
 btnLn = Button(frame6, text="In", width=3, height=1, font=fontBotao, command=botao_ln)
 btnLn.grid(row=5, column=5, sticky="s", pady=1)
 
@@ -523,3 +523,4 @@ Button(frame5, text="=", width=5, height=2, font=fontBotao, command=botao_igual)
 
 
 root.mainloop()
+
