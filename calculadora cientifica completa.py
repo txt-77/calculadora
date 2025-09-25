@@ -41,10 +41,11 @@ def logaritmo(numero):
 def botao_ans():
     entrada_atual = tela.cget("text")
     global ultimo_resultado
-    if ultimo_resultado is not None:
-        if shift_active:
+    if shift_active:
             return
-        else: 
+     
+    elif ultimo_resultado is not None:
+        
             if entrada_atual and entrada_atual[-1] in ["+", "-", "×", "÷"]:
                 atualizar_tela(tela, entrada_atual + str(ultimo_resultado))
             elif entrada_atual == "0":
